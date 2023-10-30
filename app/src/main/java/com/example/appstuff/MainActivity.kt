@@ -1,70 +1,60 @@
-package com.example.appstuff
+package com.example.amazingapp
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.appstuff.ui.theme.AppStuffTheme
 import androidx.compose.ui.unit.dp
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import com.example.amazingapp.ui.theme.AmazingAppTheme
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            AppStuffTheme {
+            AmazingAppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
                     Greeting("Android")
-                    Encouragement("egg")
-
                 }
-
             }
         }
     }
 }
 
 @Composable
- fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Surface(color = Color.Transparent) {
-        Text(
+fun Greeting(name: String, modifier: Modifier = Modifier) {
+    Text(
             text = "Hello $name!",
-            modifier = modifier.padding(horizontal = 40.dp, vertical = 200.dp).offset(x = 0.dp, y = 50.dp).background(color = Color.Red)
-        )
-    }
-}
-@Composable
-fun Encouragement(name: String, modifier: Modifier = Modifier) {
-
-    Surface(color = Color.Cyan){
-        Text(
-            text = "You can do this, $name!",
             modifier = modifier
-                .padding(horizontal = 20.dp, vertical = 20.dp)
-
-        )
-    }
-
+    )
 }
+
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun bingusPreview() {
+    AmazingAppTheme {
+        bingus("bingus", "bingus")
+    }
+}
+@Composable
+fun bingus(message: String, from: String, modifier: Modifier = Modifier) {
+    val image = painterResource(R.drawable.bingus);
+    Image(
+        painter = image,
+        contentDescription = null,
+        modifier = modifier.size(400.dp, 600.dp) //.offset(x = 50.dp, y = 50.dp)
+    )
 
-        AppStuffTheme {
-            Greeting("user")
-            Encouragement("egg")
-        }
-    
 }
